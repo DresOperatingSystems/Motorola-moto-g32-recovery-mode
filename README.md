@@ -34,6 +34,9 @@ Once platform tools have been installed on the system you are using make sure yo
 
 Now its unlocked download the twrp zip file from below and extract it on your computer once extracted go to the directory and input fastboot boot TWRP-3.7.1_12-0-devon-202401280743.img to boot your phone into recovery mode (if on windows extract to your platform tools folder)
 
+you can find the zip file at the link below
+https://mega.nz/file/TF9ymaLB#fSdXsti4tPsDei-cfTf_puzw2m6cx50JsZUdDSUgX_E
+
 DO NOT FLASH IT OR INSTALL IT BECAUSE YOU WILL LOSE ALL DEVICE DATA THIS IS SIMPLY FOR THE FLASH OF THE FUTURE DRESOS SYSTEMS OR IF YOU KNOW WHAT YOU ARE DOING AS THIS DOES PUT YOU INTO THE ROOT OF YOUR DEVICE
 
 You can also use this recovery mode to root your device via magisk using the adb sideload option 
