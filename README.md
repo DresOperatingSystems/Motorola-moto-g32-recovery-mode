@@ -1,0 +1,1 @@
+# Motorola-moto-g32-recovery-mode
