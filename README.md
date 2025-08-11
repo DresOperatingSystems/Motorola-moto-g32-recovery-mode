@@ -1,6 +1,6 @@
 # Motorola-moto-g32-recovery-mode
 
-To get into the spirit of the DresOS systems releasing soon we are releasing a twrp custom Recovery mode that you will need for the moto g32 version of DresOS 
+To get into the spirit of the DresOS systems releasing soon we are releasing a twrp custom recovery mode that you will need for the moto g32 version of DresOS 
 
 What you will need::
 
@@ -9,7 +9,7 @@ Platform tools you can get them for a windows system here
 
 https://developer.android.com/tools/releases/platform-tools
 
-Once you have downloaded the ZIP file to a convenient folder either open cmd prompt within the folder or go into cmd prompt and make your way to the folder by using the cd cmd then verify installation with adb version if installed correctly then the version number should be showing.
+Once you have downloaded the ZIP file to a convenient folder extract it then either open cmd prompt within the folder or go into cmd prompt and make your way to the folder by using the cd cmd then verify installation with adb version if installed correctly then the version number should be showing.
 
 If your device is not detected by ADB or Fastboot, installing the correct USB driver is necessary.
 You can get the usb drivers here, 
@@ -34,7 +34,7 @@ Once platform tools have been installed on the system you are using make sure yo
 
 Now its unlocked download the twrp zip file from below and extract it on your computer once extracted go to the directory and input fastboot boot TWRP-3.7.1_12-0-devon-202501080743.img to boot your phone into recovery mode (if on windows extract to your platform tools folder)
 
-you can find the zip file at the link below
+you can find the recovery mode zip file at the link below
 https://mega.nz/file/TF9ymaLB#fSdXsti4tPsDei-cfTf_puzw2m6cx50JsZUdDSUgX_E
 
 DO NOT FLASH IT OR INSTALL IT BECAUSE YOU WILL LOSE ALL DEVICE DATA THIS IS SIMPLY FOR THE FLASH OF THE FUTURE DRESOS SYSTEMS OR IF YOU KNOW WHAT YOU ARE DOING AS THIS DOES PUT YOU INTO THE ROOT OF YOUR DEVICE
