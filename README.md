@@ -1,7 +1,5 @@
 # Motorola-moto-g32-recovery-mode
 
-To get into the spirit of the DresOS systems releasing soon we are releasing a twrp custom recovery mode that you will need for the moto g32 version of DresOS 
-
 What you will need::
 
 WINDOWS:::
