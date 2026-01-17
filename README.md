@@ -1,46 +1,114 @@
-# Motorola-moto-g32-recovery-mode
+# Motorola Moto G32 Recovery Mode
 
-What you will need::
+This guide explains how to install platform tools, unlock the bootloader and boot into TWRP recovery mode on your Motorola Moto G32. **Warning:** Unlocking the bootloader will wipe your device data. Proceed with caution and back up your data first.
 
-WINDOWS:::
-Platform tools you can get them for a windows system here
+## Prerequisites
 
-https://developer.android.com/tools/releases/platform-tools
+- A USB cable to connect your phone to your computer.
+- Enable USB debugging and OEM unlocking on your device:
+  1. Go to Settings > About phone.
+  2. Tap "Build number" 7 times to enable Developer options.
+  3. Go back to Settings > System > Developer options.
+  4. Enable "USB debugging" and "OEM unlocking".
 
-Once you have downloaded the ZIP file to a convenient folder extract it then either open cmd prompt within the folder or go into cmd prompt and make your way to the folder by using the cd cmd then verify installation with adb version if installed correctly then the version number should be showing.
+## Installing Platform Tools
 
-If your device is not detected by ADB or Fastboot, installing the correct USB driver is necessary.
-You can get the usb drivers here, 
-https://dl-ssl.google.com/android/repository/latest_usb_driver_windows.zip
-Download and extract the ZIP file.
-Open Device Manager (Win + X → Device Manager).
-Locate your Android device under “Other Devices” or “Portable Devices.”
-Right-click on the device and select Update Driver.
-Choose Browse my computer for drivers and select the extracted driver folder.
-Click Next and wait for the installation to complete
+### Windows
 
-LINUX::
-We suggest you dont download platform tools the same way as it can be a longer process of setting up depending on the distro you are running so just go into the linux terminal then input this cmd 
+1. Download the platform tools from the official Android site: [https://developer.android.com/tools/releases/platform-tools](https://developer.android.com/tools/releases/platform-tools).
+2. Extract the ZIP file to a convenient folder (e.g., `C:\platform-tools`).
+3. Open a Command Prompt in that folder (hold Shift + right-click in the folder and select "Open command window here" or navigate via `cd`).
+4. Verify installation:
 
-sudo apt install adb && sudo apt install fastboot -y 
+   ```bash
+   adb version
+   ```
 
-if this doesnt work then use this cmd 
+   This should display the ADB version number.
 
+If your device isn't detected by ADB or Fastboot install USB drivers:
+
+1. Download the USB drivers: [https://dl-ssl.google.com/android/repository/latest_usb_driver_windows.zip](https://dl-ssl.google.com/android/repository/latest_usb_driver_windows.zip).
+2. Extract the ZIP file.
+3. Open Device Manager (Win + X > Device Manager).
+4. Locate your Android device under "Other Devices" or "Portable Devices."
+5. Right-click the device > Update Driver > Browse my computer for drivers.
+6. Select the extracted driver folder and click Next.
+
+### Linux
+
+Install platform tools via your package manager (for Debian based distros like Ubuntu):
+
+```bash
+sudo apt update
+sudo apt install adb fastboot -y
+```
+
+If that doesn't work try:
+
+```bash
 sudo apt install google-android-platform-tools-installer
+```
 
-Once platform tools have been installed on the system you are using make sure your bootloader is unlocked to do this go into settings then about phone and tap build number several times to unlock dev settings once unlocked go into dev settings enable usb debugging and flick the switch that says OEM UNLOCKING then input into your terminal or cmd prompt adb devices after connecting via usb cable (on windows you will have to be in the platform tools directory) and click allow on the pop up on your phone allowing all the time. Now input adb reboot bootloader to boot your phone into fastboot mode, now input fastboot oem get_unlock_data by executing this cmd you will get a string of numbers/letters so just combine this string into one line by removing the spaces and bootloader word. After that go to the official Motorola website https://en-us.support.motorola.com/app/standalone/bootloader/unlock-your-device-a and login once logged in click on next then put that string in the box and click can my device be unlocked then agree to the terms once you have agreed to the terms you should get an email with the unlock key copy and paste this then go back into your terminal or cmd prompt and input fastboot oem unlock Your_key replace Your_key with the key you got in the email and now your device's bootloader should be successfully unlocked 
+For other distros refer to your package manager (e.g., `yum` or `dnf` for RPM-based systems).
 
-Now its unlocked download the twrp zip file from below and extract it on your computer once extracted go to the directory and input fastboot boot TWRP-3.7.1_12-0-devon-202501080743.img to boot your phone into recovery mode (if on windows extract to your platform tools folder)
+## Unlocking the Bootloader
 
-you can find the recovery mode zip file at the link below
-https://mega.nz/file/TF9ymaLB#fSdXsti4tPsDei-cfTf_puzw2m6cx50JsZUdDSUgX_E
+1. Connect your phone to your computer via USB.
+2. In your terminal or Command Prompt (navigate to platform-tools folder on Windows):
 
-DO NOT FLASH IT OR INSTALL IT BECAUSE YOU WILL LOSE ALL DEVICE DATA THIS IS SIMPLY FOR THE FLASH OF THE FUTURE DRESOS SYSTEMS OR IF YOU KNOW WHAT YOU ARE DOING AS THIS DOES PUT YOU INTO THE ROOT OF YOUR DEVICE
+   ```bash
+   adb devices
+   ```
 
-You can also use this recovery mode to root your device via magisk using the adb sideload option 
+   Authorize the connection on your phone (select "Always allow from this computer").
 
-Thank you for using this repository and we hope you stick around for the future releases of the DresOS systems we also do have a DresOS store on the telegram platform where we release apps and other projects so go check it out https://t.me/+3aDyYCtuxNphMjk0
+3. Reboot to bootloader:
 
-Also any support would be much appreciated so if you could buy us a coffee showing the Dres team some much needed love
+   ```bash
+   adb reboot bootloader
+   ```
 
-https://coff.ee/dresos
+4. Get the unlock data:
+
+   ```bash
+   fastboot oem get_unlock_data
+   ```
+
+   Combine the output into a single string (remove spaces and "bootloader" words).
+
+5. Go to the official Motorola bootloader unlock site: [https://en-us.support.motorola.com/app/standalone/bootloader/unlock-your-device-a](https://en-us.support.motorola.com/app/standalone/bootloader/unlock-your-device-a).
+6. Log in click next then paste the string and check if your device can be unlocked.
+7. Agree to the terms; you'll receive an unlock key via email.
+8. Unlock the bootloader (replace `YOUR_UNLOCK_KEY` with the key from the email):
+
+   ```bash
+   fastboot oem unlock YOUR_UNLOCK_KEY
+   ```
+
+   Your device will reboot and wipe data.
+
+## Booting into TWRP Recovery
+
+1. Download the TWRP image from this repository: 
+2. Place the image in your platform-tools folder (or current directory).
+3. Boot into the recovery (ensure you're in bootloader mode):
+
+   ```bash
+   fastboot boot TWRP-3.7.1_12-0-devon-202501080743.img
+   ```
+
+**Important:** Do NOT flash or install the TWRP image permanently, as it will wipe your device data. This is only for temporary booting into recovery for tasks like flashing custom ROMs or advanced operations.
+
+## Additional Uses
+
+- **Rooting with Magisk:** In TWRP use the ADB sideload option to install Magisk for root access.
+- If you know what you're doing, this recovery provides root-level access to your device.
+
+**Disclaimer:** These steps involve risks that could end up bricking your device. Use at your own risk. Ensure you're following the latest official guides for your specific device model.
+
+Thank You 
+
+The DresOS Team
+
+check out our website here: https://dresoperatingsystems.github.io/
